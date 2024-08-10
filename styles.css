@@ -98,6 +98,11 @@ button:hover {
 
 .res-card .res-details {
 	padding: 1rem;
-	line-height: 30px;
-	font-size: 20px;
+	line-height: 25px;
+	font-size: 17px;
+}
+
+.filter-button {
+	margin-left: 2rem;
+	width: 20%;
 }
