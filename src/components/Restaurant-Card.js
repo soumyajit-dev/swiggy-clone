@@ -1,15 +1,18 @@
 import CONSTANTS from '../Utils/constant';
 
 const RestaurantCard = (props) => {
-	console.log(props);
+	const { name, cloudinaryImageId, avgRating, cuisines, costForTwo, locality, areaName, sla } = props.resDetails.info;
 	return (
 		<div className='res-card'>
-			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + props.resDetails.image} alt='Image-1' />
+			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + cloudinaryImageId} alt='Image-1' />
 			<div className='res-details'>
-				<h3 className='resturent-name'>{props.resDetails.resturentName}</h3>
-				<p className='res-type'>{props.resDetails.resType}</p>
-				<p className='res-address'>{props.resDetails.resAddress}</p>
-				<p className='res-address'>{props.resDetails.rating} Stars</p>
+				<h3 className='restaurant-name'>{name}</h3>
+				<p className='res-type'>{cuisines.join(', ')}</p>
+				<p className='res-address'>{locality + ', ' + areaName}</p>
+				<p className='res-rating'>
+					{avgRating} Stars - <b>{sla.slaString}</b>
+				</p>
+				<p className='res-costForTwo'>{costForTwo}</p>
 			</div>
 		</div>
 	);

@@ -25,7 +25,7 @@
 (Normal JS utility functions)
 
 - useState() - Superpowerful State Variables in react
-- useEffect()
+- useEffect() - For Doing something after the component is loaded
 
 # React Basics
 
@@ -50,3 +50,5 @@
 # Doubts
 
 - Do we have something on load of a component? useEffect works after the component is rendered.
+- Can we use Material UI in React?
+- How to add assets in build?
