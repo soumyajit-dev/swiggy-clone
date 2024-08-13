@@ -47,6 +47,12 @@
 - The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures.
 - Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
 
+# Routing
+
+- There are 2 tyes of routing in web app.
+  1. Client Side Routing - Refersh the Component in the <Outlet />
+  2. Server Side Routing - Reload the whole page every time while routing
+
 # Doubts
 
 - Do we have something on load of a component? useEffect works after the component is rendered.

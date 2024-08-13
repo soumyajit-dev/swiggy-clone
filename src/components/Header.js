@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
-import CONSTANTS from '../Utils/constant';
+import { Link } from 'react-router-dom';
+import CONSTANTS from '../utils/constant';
 
-const Header = () => {
+const HeaderComponent = () => {
 	let [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
 	return (
 		<div className='header'>
-			<img title='logo' className='logo' src={CONSTANTS.LOGO_URL} alt='Logo' />
+			<Link to={'home'}>
+				<img title='logo' className='logo' src={CONSTANTS.LOGO_URL} alt='Logo' />
+			</Link>
 			<div className='nav-items'>
-				<span>Home</span>
-				<span>About Us</span>
-				<span>Offers</span>
-				<span
+				<Link className='item' to={'home'}>
+					Home
+				</Link>
+				<Link className='item' to={'about'}>
+					About Us
+				</Link>
+				<Link className='item' to={'contact'}>
+					Contact Us
+				</Link>
+				<Link
+					className='item'
 					onClick={() => {
 						setIsUserSignedIn(!isUserSignedIn);
 					}}>
@@ -30,11 +40,11 @@ const Header = () => {
 							<p>Logout</p>
 						</>
 					)}
-				</span>
-				<span>Cart</span>
+				</Link>
+				<Link className='item'>Cart</Link>
 			</div>
 		</div>
 	);
 };
 
-export default Header;
+export default HeaderComponent;

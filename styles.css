@@ -9,6 +9,11 @@ body {
 	font-size: 14px;
 }
 
+body,
+html {
+	color: #282c3f;
+}
+
 button {
 	padding: 9px;
 	border: 1px solid rgb(121, 121, 121);
@@ -52,27 +57,29 @@ input:focus {
 	gap: 2rem;
 }
 
-.header .nav-items span {
+.header .nav-items .item {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 5px;
+	text-decoration: none;
+	color: black;
 	font-size: 15px;
 	font-weight: 500;
 	cursor: pointer;
 }
 
-.header .nav-items span:hover {
-	color: #ff722f;
-}
-
-.header .nav-items span > svg {
+.header .nav-items .item > svg {
 	width: 17px;
 	height: 17px;
 }
 
-.header .nav-items span:hover > svg {
+.header .nav-items .item:hover {
 	color: #ff722f;
+
+	> svg {
+		color: #ff722f;
+	}
 }
 
 .main-container {
@@ -98,28 +105,29 @@ input:focus {
 }
 
 .main-container .resturent-container {
+	width: 100%;
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+	margin: auto;
+	justify-content: stretch;
 	flex-wrap: wrap;
-	gap: 15px;
 }
 
-.res-card {
-	width: 230px;
+.resturent-container .res-card {
+	flex-basis: 14%;
 	margin: 1rem;
-	border: 1px solid black;
 	border-radius: 10px;
-	align-self: stretch;
+	/* box-shadow: 0 0 10px 3px lightgray; */
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 	cursor: pointer;
+	text-decoration: none;
+	color: black;
 }
 
-.res-card:hover {
+.resturent-container .res-card:hover {
 	transform: scale(1.05);
 }
 
-.res-card img {
+.resturent-container .res-card img {
 	width: 100%;
 	height: 190px;
 	border-bottom: 1px solid black;
@@ -167,4 +175,72 @@ input:focus {
 	margin: 1rem;
 	border: 1px solid #d6d6d6;
 	border-radius: 10px;
+}
+
+.res-menu {
+	max-width: 800px;
+	min-height: 800px;
+	margin: 20px auto;
+}
+
+.res-menu .res-info {
+	padding: 1rem;
+	border: 1px solid black;
+	border-radius: 12px;
+	background-color: #ffffff;
+	margin: 2rem 0;
+	line-height: 32px;
+}
+
+.flex {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+	opacity: 0.7;
+	margin-right: 5px;
+}
+
+.res-menu .res-info .cuisine {
+	color: #ff5200;
+	text-decoration: underline;
+}
+
+.expectation-notifier img {
+	width: 20px;
+}
+
+.menu-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 3rem 0;
+	border-bottom: 1px solid #c2bfbf;
+}
+
+.menu-item img {
+	width: 200px;
+	border-radius: 10px;
+}
+
+.menu-item .menu-info {
+	line-height: 30px;
+	width: 60%;
+}
+
+@media only screen and (max-width: 750px) {
+	.resturent-container .res-card {
+		flex-basis: 30%;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.resturent-container {
+		width: 100%;
+		flex-direction: column;
+	}
 }

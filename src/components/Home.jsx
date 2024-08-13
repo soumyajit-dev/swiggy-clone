@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
-import CONSTANTS from '../Utils/constant';
-import { RestaurantCard } from './Restaurant-Card';
+import CONSTANTS from '../utils/constant';
+import { RestaurantCard } from './RestaurantCard';
 import Shimmer from './Shimmer';
 
-const BodyComponent = () => {
+const HomeComponent = () => {
 	const [restaurants, setRestaurants] = useState([]);
 	const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 	const [searchText, setSearchText] = useState('');
 
 	const fetchData = async () => {
-		const data = await fetch(CONSTANTS.SWIGGY_API);
+		try {
+			const data = await fetch(CONSTANTS.SWIGGY_API);
 
-		const jsonData = await data.json();
-		const restaurantDetails = jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-		setRestaurants(restaurantDetails);
-		setFilteredRestaurants(restaurantDetails);
+			const jsonData = await data.json();
+			const restaurantDetails = jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+			setRestaurants(restaurantDetails);
+			setFilteredRestaurants(restaurantDetails);
+		} catch (e) {
+			console.log(e.message);
+		}
 	};
 
 	useEffect(() => {
@@ -22,7 +26,7 @@ const BodyComponent = () => {
 	}, []);
 
 	// Conditional Rendering
-	return !restaurants.length ? (
+	return !restaurants || !restaurants.length ? (
 		// Shimmer()
 		<Shimmer />
 	) : (
@@ -56,11 +60,11 @@ const BodyComponent = () => {
 			</button>
 			<div className='resturent-container'>
 				{filteredRestaurants.map((eachRes, index) => (
-					<RestaurantCard key={eachRes.info.id} resDetails={eachRes} index={index}></RestaurantCard>
+					<RestaurantCard key={eachRes.info.id} resDetails={eachRes} index={index} />
 				))}
 			</div>
 		</div>
 	);
 };
 
-module.exports = { BodyComponent };
+export default HomeComponent;

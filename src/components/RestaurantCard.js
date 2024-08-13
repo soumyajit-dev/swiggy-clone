@@ -1,9 +1,14 @@
-import CONSTANTS from '../Utils/constant';
+import { Link, useNavigate } from 'react-router-dom';
+import CONSTANTS from '../utils/constant';
 
 const RestaurantCard = (props) => {
-	const { name, cloudinaryImageId, avgRating, cuisines, costForTwo, locality, areaName, sla } = props.resDetails.info;
+	const { id, name, cloudinaryImageId, avgRating, cuisines, costForTwo, locality, areaName, sla } = props.resDetails.info;
+	const handleNavigation = (route) => {
+		useNavigate()(route);
+	};
+
 	return (
-		<div className='res-card'>
+		<Link className='res-card' to={'/restaurants/' + id}>
 			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + cloudinaryImageId} alt='Image-1' />
 			<div className='res-details'>
 				<h3 className='restaurant-name'>{name}</h3>
@@ -14,7 +19,7 @@ const RestaurantCard = (props) => {
 				</p>
 				<p className='res-costForTwo'>{costForTwo}</p>
 			</div>
-		</div>
+		</Link>
 	);
 };
 
