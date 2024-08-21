@@ -58,3 +58,7 @@
 - Do we have something on load of a component? useEffect works after the component is rendered.
 - Can we use Material UI in React?
 - How to add assets in build?
+
+# Parcel
+
+- "start": "parcel index.html --open",

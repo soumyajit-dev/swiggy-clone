@@ -1,29 +1,23 @@
 import { useEffect, useState } from 'react';
-import CONSTANTS from '../utils/constant';
+import useNetworkActivity from '../utils/useNetworkActivity';
+import useRestaurantsInfo from '../utils/useRestaurantsInfo';
 import { RestaurantCard } from './RestaurantCard';
 import Shimmer from './Shimmer';
 
 const HomeComponent = () => {
-	const [restaurants, setRestaurants] = useState([]);
+	const restaurants = useRestaurantsInfo();
 	const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 	const [searchText, setSearchText] = useState('');
 
-	const fetchData = async () => {
-		try {
-			const data = await fetch(CONSTANTS.SWIGGY_API);
-
-			const jsonData = await data.json();
-			const restaurantDetails = jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-			setRestaurants(restaurantDetails);
-			setFilteredRestaurants(restaurantDetails);
-		} catch (e) {
-			console.log(e.message);
-		}
-	};
+	const networkStatus = useNetworkActivity();
 
 	useEffect(() => {
-		fetchData();
-	}, []);
+		setFilteredRestaurants(restaurants);
+	}, [restaurants]);
+
+	if (!networkStatus) {
+		return <h1>Looks like your are offine. Please check your network or try after sometime</h1>;
+	}
 
 	// Conditional Rendering
 	return !restaurants || !restaurants.length ? (
@@ -59,7 +53,7 @@ const HomeComponent = () => {
 				Show Top Rated Restaursnt
 			</button>
 			<div className='resturent-container'>
-				{filteredRestaurants.map((eachRes, index) => (
+				{filteredRestaurants?.map((eachRes, index) => (
 					<RestaurantCard key={eachRes.info.id} resDetails={eachRes} index={index} />
 				))}
 			</div>

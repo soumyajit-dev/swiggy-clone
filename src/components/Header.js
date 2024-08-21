@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CONSTANTS from '../utils/constant';
+import useNetworkActivity from '../utils/useNetworkActivity';
 
 const HeaderComponent = () => {
 	let [isUserSignedIn, setIsUserSignedIn] = useState(false);
+
+	const onlineStatus = useNetworkActivity();
 
 	return (
 		<div className='header'>
@@ -41,7 +44,10 @@ const HeaderComponent = () => {
 						</>
 					)}
 				</Link>
-				<Link className='item'>Cart</Link>
+				<Link className='item'>
+					<span>{onlineStatus ? '✅' : '🔴'}</span>
+					<span>Cart</span>
+				</Link>
 			</div>
 		</div>
 	);

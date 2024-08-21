@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import CONSTANTS from '../utils/constant';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 import Shimmer from './Shimmer';
 
 const RestaurantMenuComponent = () => {
-	const [restaurantInfo, setRestaurantInfo] = useState(null);
-
 	const { id } = useParams();
+	const restaurantInfo = useRestaurantMenu(id);
 
-	useEffect(() => {
-		fetchResData();
-	}, []);
-
-	const fetchResData = async () => {
-		const data = await fetch(CONSTANTS.SWIGGY_RES_API + id);
-
-		const jsonData = await data.json();
-		setRestaurantInfo(jsonData.data?.cards);
-	};
-
-	if (restaurantInfo === null) return <Shimmer />;
+	if (restaurantInfo === null || restaurantInfo.length === 0) return <Shimmer />;
 
 	const { avgRating, totalRatingsString, costForTwoMessage, cuisines, sla, expectationNotifiers } = restaurantInfo[2].card?.card?.info;
 	const recommendedCards = restaurantInfo[4].groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;

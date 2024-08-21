@@ -1,13 +1,48 @@
-const AboutComponent = () => {
-	return (
-		<div>
-			<h1>About</h1>
-			<h3>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, aspernatur minus perferendis tempore optio recusandae nam debitis, natus ipsa quo itaque dolore harum
-				at aut magni pariatur omnis. Minima, possimus!
-			</h3>
-		</div>
-	);
-};
+import React, { Component } from 'react';
+import UserComponent from './User';
+
+class AboutComponent extends Component {
+	render() {
+		const user = {
+			id: 'debasish-khan',
+			avatar_url: '',
+			bio: '',
+			name: '',
+			email: '',
+			number: '+91 8976543210',
+			location: 'Kolkata',
+		};
+
+		return (
+			<div className='about-us'>
+				{Array(7)
+					.fill(user)
+					.map((each, index) => {
+						return <UserComponent key={index} userDetails={each} />;
+					})}
+				{/* <UserClassComponent userDetails={user} /> */}
+			</div>
+		);
+	}
+}
+
+// const AboutComponent = () => {
+// 	const user = {
+// 		name: 'Soumyajit Sarkar',
+// 		email: 'soumyajit.9614@gmail.com',
+// 		number: '+91 8976543210',
+// 		location: 'Kolkata',
+// 	};
+// 	return (
+// 		<div className='about-us'>
+// 			{Array(7)
+// 				.fill(user)
+// 				.map((each, index) => {
+// 					return <UserComponent key={index} userDetails={each} />;
+// 				})}
+// 			<UserClassComponent userDetails={user} />
+// 		</div>
+// 	);
+// };
 
 export default AboutComponent;
