@@ -12,7 +12,9 @@ const AppLayout = () => {
 	return (
 		<div className='app'>
 			<HeaderComponent></HeaderComponent>
-			<Outlet />
+			<div className='mt-24'>
+				<Outlet />
+			</div>
 		</div>
 	);
 };

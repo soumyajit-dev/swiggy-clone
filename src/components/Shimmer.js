@@ -1,22 +1,15 @@
 const Shimmer = () => {
 	return (
-		<>
+		<div className='mt-16'>
 			<div className='shimmer-search'></div>
 			<div className='shimmer-container'>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
-				<div className='shimmer-card'></div>
+				{Array(10)
+					.fill(null)
+					.map((each, index) => {
+						return <div key={index} className='shimmer-card'></div>;
+					})}
 			</div>
-		</>
+		</div>
 	);
 };
 

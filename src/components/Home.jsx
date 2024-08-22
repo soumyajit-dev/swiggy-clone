@@ -24,7 +24,7 @@ const HomeComponent = () => {
 		// Shimmer()
 		<Shimmer />
 	) : (
-		<div className='main-container'>
+		<div className='main-container px-10'>
 			<div className='search-bar'>
 				<input
 					title='search-input'
@@ -38,7 +38,7 @@ const HomeComponent = () => {
 				<button
 					type='button'
 					title='search-button'
-					className='search-button'
+					className='search-button rounded-lg'
 					onClick={() => {
 						setFilteredRestaurants(restaurants.filter((eachRes) => eachRes.info.name.toLowerCase().includes(searchText.toLowerCase())));
 					}}>

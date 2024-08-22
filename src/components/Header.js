@@ -9,22 +9,22 @@ const HeaderComponent = () => {
 	const onlineStatus = useNetworkActivity();
 
 	return (
-		<div className='header'>
+		<div className='flex justify-between items-center bg-white shadow-md fixed z-10 w-full top-0'>
 			<Link to={'home'}>
-				<img title='logo' className='logo' src={CONSTANTS.LOGO_URL} alt='Logo' />
+				<img title='logo' className='w-20 ml-4' src={CONSTANTS.LOGO_URL} alt='Logo' />
 			</Link>
-			<div className='nav-items'>
-				<Link className='item' to={'home'}>
+			<div className='flex w-6/12 justify-evenly items-center'>
+				<Link className='flex items-center gap-3 whitespace-nowrap hover:text-orange-400' to={'home'}>
 					Home
 				</Link>
-				<Link className='item' to={'about'}>
+				<Link className='flex items-center gap-3 whitespace-nowrap hover:text-orange-400' to={'about'}>
 					About Us
 				</Link>
-				<Link className='item' to={'contact'}>
+				<Link className='flex items-center gap-3 whitespace-nowrap hover:text-orange-400' to={'contact'}>
 					Contact Us
 				</Link>
 				<Link
-					className='item'
+					className='flex items-center gap-3 whitespace-nowrap hover:text-orange-400'
 					onClick={() => {
 						setIsUserSignedIn(!isUserSignedIn);
 					}}>
@@ -44,7 +44,7 @@ const HeaderComponent = () => {
 						</>
 					)}
 				</Link>
-				<Link className='item'>
+				<Link className='flex items-center gap-3 whitespace-nowrap hover:text-orange-400'>
 					<span>{onlineStatus ? '✅' : '🔴'}</span>
 					<span>Cart</span>
 				</Link>

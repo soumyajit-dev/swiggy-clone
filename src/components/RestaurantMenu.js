@@ -15,7 +15,7 @@ const RestaurantMenuComponent = () => {
 
 	return (
 		<div className='res-menu'>
-			<h1 className='res-name'>{restaurantInfo[0].card?.card?.text}</h1>
+			<h1 className='res-name font-bold text-2xl'>{restaurantInfo[0].card?.card?.text}</h1>
 			<div className='res-info'>
 				<h3>
 					{avgRating} ({totalRatingsString}) - {costForTwoMessage}
