@@ -62,3 +62,7 @@
 # Parcel
 
 - "start": "parcel index.html --open",
+
+# React Context
+
+- This is Global Context that can be accessible any where through out the application.

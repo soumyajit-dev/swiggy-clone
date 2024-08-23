@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html --port 4200 --open"
+    "copy-assets": "cp -r src/assets dist",
+    "init": "npm run copy-assets",
+    "start": "npm run init && parcel src/index.html --port 4200 --open",
+    "build": "npm run init && parcel build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^6.26.0",
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
     "parcel": "^2.12.0",

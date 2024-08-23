@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import useNetworkActivity from '../utils/useNetworkActivity';
 import useRestaurantsInfo from '../utils/useRestaurantsInfo';
+import { enhancedRestaurantCard } from './EnhancedRestaurantCard';
 import { RestaurantCard } from './RestaurantCard';
 import Shimmer from './Shimmer';
+import { Flex } from './styles/Flex.styled';
+import { LinkButton } from './styles/LinkButton.styled';
+import { SearchField } from './styles/SearchField.styled';
 
 const HomeComponent = () => {
 	const restaurants = useRestaurantsInfo();
@@ -10,6 +14,8 @@ const HomeComponent = () => {
 	const [searchText, setSearchText] = useState('');
 
 	const networkStatus = useNetworkActivity();
+
+	const RestaurantCardPromoted = enhancedRestaurantCard(RestaurantCard);
 
 	useEffect(() => {
 		setFilteredRestaurants(restaurants);
@@ -24,38 +30,48 @@ const HomeComponent = () => {
 		// Shimmer()
 		<Shimmer />
 	) : (
-		<div className='main-container px-10'>
-			<div className='search-bar'>
-				<input
-					title='search-input'
-					className='search-input'
-					type='text'
-					value={searchText}
-					onInput={(e) => {
-						setSearchText(e.target.value);
-					}}
-				/>
-				<button
-					type='button'
-					title='search-button'
-					className='search-button rounded-lg'
+		<div className='main-container'>
+			<div className='flex justify-between mx-auto h-12'>
+				<SearchField>
+					<Flex>
+						<input
+							className='search-input'
+							title='search-input'
+							type='test'
+							value={searchText}
+							placeholder='Search...'
+							onInput={(e) => {
+								setSearchText(e.target.value);
+							}}
+						/>
+						<button
+							className='search-button'
+							type='submit'
+							title='search-button'
+							onClick={() => {
+								setFilteredRestaurants(restaurants.filter((eachRes) => eachRes.info.name.toLowerCase().includes(searchText.toLowerCase())));
+							}}>
+							Search
+						</button>
+					</Flex>
+				</SearchField>
+				<LinkButton
 					onClick={() => {
-						setFilteredRestaurants(restaurants.filter((eachRes) => eachRes.info.name.toLowerCase().includes(searchText.toLowerCase())));
+						setFilteredRestaurants(restaurants.filter((eachRes) => eachRes.info.avgRating >= 4.5));
 					}}>
-					Search
-				</button>
+					Show Top Rated Restaurant
+				</LinkButton>
 			</div>
-			<button
-				className='filter-button'
-				onClick={() => {
-					setFilteredRestaurants(restaurants.filter((eachRes) => eachRes.info.avgRating >= 4.5));
-				}}>
-				Show Top Rated Restaursnt
-			</button>
-			<div className='resturent-container'>
-				{filteredRestaurants?.map((eachRes, index) => (
-					<RestaurantCard key={eachRes.info.id} resDetails={eachRes} index={index} />
-				))}
+			<div className='mx-auto my-5'>
+				<div className='resturent-container'>
+					{filteredRestaurants?.map((eachRes, index) => {
+						return eachRes.info.avgRating >= 4.5 ? (
+							<RestaurantCardPromoted key={index} resDetails={eachRes} index={index} />
+						) : (
+							<RestaurantCard key={index} resDetails={eachRes} index={index} />
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

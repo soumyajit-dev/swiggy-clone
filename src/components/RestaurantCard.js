@@ -8,11 +8,14 @@ const RestaurantCard = (props) => {
 	};
 
 	return (
-		<Link className='res-card' to={'/restaurants/' + id}>
-			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + cloudinaryImageId} alt='Image-1' />
+		<Link className='res-card' id={'res-card-' + props.index} to={'/restaurants/' + id}>
+			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + cloudinaryImageId} alt='Image-1' className='w-full h-52' />
 			<div className='res-details'>
-				<h3 className='restaurant-name'>{name}</h3>
-				<p className='res-type'>{cuisines.join(', ')}</p>
+				<h3 className='restaurant-name font-bold'>{name}</h3>
+				<p className='res-type font-bold'>
+					{cuisines.slice(0, 3).join(', ')}
+					{cuisines?.length > 3 ? '...' : null}
+				</p>
 				<p className='res-address'>{locality + ', ' + areaName}</p>
 				<p className='res-rating'>
 					{avgRating} Stars - <b>{sla.slaString}</b>
