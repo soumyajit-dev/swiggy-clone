@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CONSTANTS from './constant';
 
@@ -9,9 +10,8 @@ const useRestaurantMenu = (resId) => {
 	}, []);
 
 	const fetchData = async () => {
-		const data = await fetch(CONSTANTS.SWIGGY_RES_API + resId);
-		const json = await data.json();
-		setResInfo(json.data?.cards);
+		const axiosData = await axios.get(CONSTANTS.SWIGGY_RES_API + resId);
+		setResInfo(axiosData.data?.data?.cards);
 	};
 
 	return resInfo;

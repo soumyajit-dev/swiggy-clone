@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CONSTANTS from './constant';
 
@@ -9,11 +10,10 @@ const useRestaurantsInfo = () => {
 	}, []);
 
 	const fetchData = async () => {
-		const data = await fetch(CONSTANTS.SWIGGY_API);
-		const json = await data.json();
+		const axiosData = await axios.get(CONSTANTS.SWIGGY_API);
 		const restaurants = [
-			...json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
-			...json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+			...axiosData.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+			...axiosData.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
 		];
 		setResInfo(restaurants);
 	};
