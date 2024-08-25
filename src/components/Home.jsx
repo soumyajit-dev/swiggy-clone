@@ -22,7 +22,7 @@ const HomeComponent = () => {
 	}, [restaurants]);
 
 	if (!networkStatus) {
-		return <h1>Looks like your are offine. Please check your network or try after sometime</h1>;
+		return <h1 className='font-bold text-2xl'>Looks like your are offine. Please check your network or try after sometime</h1>;
 	}
 
 	// Conditional Rendering
@@ -63,7 +63,7 @@ const HomeComponent = () => {
 				</LinkButton>
 			</div>
 			<div className='mx-auto my-5'>
-				<div className='resturent-container'>
+				<div className='flex justify-between flex-wrap m-auto'>
 					{filteredRestaurants?.map((eachRes, index) => {
 						return eachRes.info.avgRating >= 4.5 ? (
 							<RestaurantCardPromoted key={index} resDetails={eachRes} index={index} />

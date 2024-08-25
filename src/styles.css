@@ -2,14 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.main-container .resturent-container {
-	display: flex;
-	margin: auto;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.resturent-container .res-card {
+.res-card {
 	flex-basis: 23%;
 	margin: 1rem 0;
 	cursor: pointer;
@@ -17,51 +10,8 @@
 	color: black;
 }
 
-.resturent-container .res-card:hover {
-	transform: scale(1.05);
-}
-
-.resturent-container .res-card img {
-	/* border-bottom: 1px solid black; */
-	border-radius: 10px;
-}
-
-.res-card .res-details {
-	padding: 0.5rem;
-	line-height: 25px;
-}
-
-.res-card .res-details .restaurant-name {
-	font-size: 20px;
-	margin-bottom: 10px;
-}
-
-.filter-button {
-	width: 20%;
-}
-
-.shimmer-container {
-	display: flex;
-	justify-content: space-between;
-	align-self: center;
-	padding: 2rem;
-	flex-wrap: wrap;
-}
-
-.shimmer-search {
-	margin: 2rem 10%;
-	width: 80%;
-	padding: 1.5rem;
-	border-radius: 10px;
-	background-color: #d6d6d6;
-}
-
-.shimmer-card {
-	flex-basis: 23%;
-	height: 300px;
-	background-color: #d6d6d6;
-	margin: 1rem 0;
-	border-radius: 10px;
+.res-card:hover {
+	transform: scale(0.95);
 }
 
 .res-menu {
@@ -134,14 +84,7 @@
 }
 
 @media only screen and (max-width: 750px) {
-	.resturent-container .res-card {
+	.res-card {
 		flex-basis: 30%;
-	}
-}
-
-@media screen and (max-width: 450px) {
-	.resturent-container {
-		width: 100%;
-		flex-direction: column;
 	}
 }

@@ -63,6 +63,15 @@
 
 - "start": "parcel index.html --open",
 
-# React Context
+# React Context API
 
 - This is Global Context that can be accessible any where through out the application.
+
+# React Redux
+
+- Install @reduxjs/toolkit and react-redux
+- Build our own store
+- Connect our store with the app
+- Create Slices in our store
+- Dispatch (action) -> reducer
+- Read the data with Selector by subscribing

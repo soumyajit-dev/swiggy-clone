@@ -1,15 +1,18 @@
+import { Flex } from './styles/Flex.styled';
+import { ShimmerCard, ShimmerSearch, ShimmerStyled } from './styles/Shimmer.styled';
+
 const Shimmer = () => {
 	return (
-		<>
-			<div className='shimmer-search'></div>
-			<div className='shimmer-container mx-auto my-5'>
+		<ShimmerStyled>
+			<ShimmerSearch></ShimmerSearch>
+			<Flex $justify='space-between' className='main-body'>
 				{Array(12)
 					.fill(null)
 					.map((each, index) => {
-						return <div key={index} className='shimmer-card'></div>;
+						return <ShimmerCard key={index}></ShimmerCard>;
 					})}
-			</div>
-		</>
+			</Flex>
+		</ShimmerStyled>
 	);
 };
 

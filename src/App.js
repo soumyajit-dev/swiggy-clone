@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import ContactUsComponent from './components/ContactUs';
@@ -8,24 +9,29 @@ import HomeComponent from './components/Home';
 import RestaurantMenuComponent from './components/RestaurantMenu';
 import { Container } from './components/styles/Container.styled';
 import GlobalStyle from './components/styles/Global';
+import appStore from './store/appStore';
 import theme from './utils/theme';
 import UserContext from './utils/UserContext';
 
 const AboutComponent = lazy(() => import('./components/About'));
+
+const CartComponent = lazy(() => import('./components/Cart'));
 
 const AppLayout = () => {
 	const [userInfo, setUserInfo] = useState();
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
-			<UserContext.Provider value={{ loggedInUser: userInfo, setLoggedInUser: setUserInfo }}>
-				<div className='app'>
-					<HeaderComponent></HeaderComponent>
-					<Container>
-						<Outlet />
-					</Container>
-				</div>
-			</UserContext.Provider>
+			<Provider store={appStore}>
+				<UserContext.Provider value={{ context: userInfo, setContext: setUserInfo }}>
+					<div className='app'>
+						<HeaderComponent></HeaderComponent>
+						<Container>
+							<Outlet />
+						</Container>
+					</div>
+				</UserContext.Provider>
+			</Provider>
 		</ThemeProvider>
 	);
 };
@@ -54,6 +60,14 @@ const appRouter = createBrowserRouter([
 			{
 				path: 'contact',
 				element: <ContactUsComponent />,
+			},
+			{
+				path: 'cart',
+				element: (
+					<Suspense fallback={<h1>Loading...</h1>}>
+						<CartComponent />
+					</Suspense>
+				),
 			},
 			{
 				path: 'restaurants/:id',

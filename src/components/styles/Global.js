@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${theme.colors.body};
     font-family: 'ProximaNova', arial, 'Helvetica Neue', sans-serif;
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   body,

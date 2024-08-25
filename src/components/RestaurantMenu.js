@@ -10,7 +10,7 @@ const RestaurantMenuComponent = () => {
 	const { id } = useParams();
 	const restaurantInfo = useRestaurantMenu(id);
 
-	const [accordianIndex, setAccordianIndex] = useState(null);
+	const [accordianIndex, setAccordianIndex] = useState(0);
 
 	if (restaurantInfo === null || restaurantInfo.length === 0) return <Shimmer />;
 
@@ -26,7 +26,7 @@ const RestaurantMenuComponent = () => {
 
 	return (
 		<>
-			<h1 className='res-name font-bold text-2xl py-4'>{restaurantInfo[0].card?.card?.text}</h1>
+			<h1 className='res-name font-bold text-2xl py-8'>{restaurantInfo[0].card?.card?.text}</h1>
 			<div className='shadow-xl bg-white border border-gray-200 rounded-2xl leading-8 mb-10'>
 				<div className='p-8 border-b border-gray-200'>
 					<h3 className='font-bold text-xl'>

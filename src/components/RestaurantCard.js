@@ -9,18 +9,18 @@ const RestaurantCard = (props) => {
 
 	return (
 		<Link className='res-card' id={'res-card-' + props.index} to={'/restaurants/' + id}>
-			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + cloudinaryImageId} alt='Image-1' className='w-full h-52' />
-			<div className='res-details'>
-				<h3 className='restaurant-name font-bold'>{name}</h3>
-				<p className='res-type font-bold'>
+			<img title={'res-card-image-' + props.index} src={CONSTANTS.CLOUDANARY_LOCATION + cloudinaryImageId} alt='Image-1' className='rounded-lg w-full h-52' />
+			<div className='p-2 leading-6'>
+				<h2 className='text-xl mb-3 font-bold'>{name}</h2>
+				<p className='text-[0.8rem] font-bold'>
 					{cuisines.slice(0, 3).join(', ')}
 					{cuisines?.length > 3 ? '...' : null}
 				</p>
-				<p className='res-address'>{locality + ', ' + areaName}</p>
-				<p className='res-rating'>
+				<p className='text-[0.8rem]'>{locality + ', ' + areaName}</p>
+				<h3 className='text-[0.9rem]'>
 					{avgRating} Stars - <b>{sla.slaString}</b>
-				</p>
-				<p className='res-costForTwo'>{costForTwo}</p>
+				</h3>
+				<h3 className='text-[0.9rem]'>{costForTwo}</h3>
 			</div>
 		</Link>
 	);
