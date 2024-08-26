@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart, removeItemFromCart } from '../store/cartSlice';
+import { addItemToCart, removeItemFromCart } from '../redux/store/cartSlice';
 import CONSTANTS from '../utils/constant';
 import { AddedMenuButton } from './styles/AddedMenuButton';
 import { Button } from './styles/Button.styled';

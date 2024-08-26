@@ -1,11 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CONSTANTS from '../utils/constant';
 
 const RestaurantCard = (props) => {
 	const { id, name, cloudinaryImageId, avgRating, cuisines, costForTwo, locality, areaName, sla } = props.resDetails.info;
-	const handleNavigation = (route) => {
-		useNavigate()(route);
-	};
 
 	return (
 		<Link className='res-card' id={'res-card-' + props.index} to={'/restaurants/' + id}>
@@ -14,7 +11,7 @@ const RestaurantCard = (props) => {
 				<h2 className='text-xl mb-3 font-bold'>{name}</h2>
 				<p className='text-[0.8rem] font-bold'>
 					{cuisines.slice(0, 3).join(', ')}
-					{cuisines?.length > 3 ? '...' : null}
+					{cuisines?.length > 3 && '...'}
 				</p>
 				<p className='text-[0.8rem]'>{locality + ', ' + areaName}</p>
 				<h3 className='text-[0.9rem]'>

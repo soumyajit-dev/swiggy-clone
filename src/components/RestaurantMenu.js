@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useGetAllMenuByRestaurantQuery } from '../redux/services/restaurantApi';
 import CONSTANTS from '../utils/constant';
-import useRestaurantMenu from '../utils/useRestaurantMenu';
 import MenuCardsComponent from './MenuCards';
 import { restaurantMenuAccordian } from './RestaurantMenuAccordians';
 import Shimmer from './Shimmer';
 
 const RestaurantMenuComponent = () => {
 	const { id } = useParams();
-	const restaurantInfo = useRestaurantMenu(id);
+	const { data: restaurantInfo, isLoading } = useGetAllMenuByRestaurantQuery(id);
 
 	const [accordianIndex, setAccordianIndex] = useState(0);
 
-	if (restaurantInfo === null || restaurantInfo.length === 0) return <Shimmer />;
+	if (isLoading || !restaurantInfo?.length) return <Shimmer />;
 
 	const { avgRating, totalRatingsString, costForTwoMessage, cuisines, sla, expectationNotifiers } = restaurantInfo[2].card?.card?.info;
 

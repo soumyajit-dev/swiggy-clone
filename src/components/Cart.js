@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { environment } from '../environments/environment';
-import { addItemToCart, clearSpecificCartItem, removeItemFromCart } from '../store/cartSlice';
+import { addItemToCart, clearSpecificCartItem, removeItemFromCart } from '../redux/store/cartSlice';
 import CONSTANTS from '../utils/constant';
 import { Button } from './styles/Button.styled';
 import { Cart, CartFooter, CartItem, EmptyCart } from './styles/Cart.styled';

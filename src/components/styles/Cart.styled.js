@@ -22,11 +22,8 @@ export const Cart = styled.div`
 		}
 
 		button {
-			width: 2rem;
-			font-size: 1.1rem;
-			height: 2rem;
-			padding: 2px;
-			border-radius: 100%;
+			width: 1.3rem;
+			border-radius: 50%;
 
 			&:hover {
 				background-color: #b5b5b552;
@@ -65,6 +62,11 @@ export const CartItem = styled.div`
 	padding-bottom: 2rem;
 	margin: 2rem 0;
 	border-bottom: 1px solid ${theme.colors.borderColor};
+
+	img {
+		width: 1.2rem;
+		height: 1.3rem;
+	}
 `;
 
 export const CartFooter = styled.div`

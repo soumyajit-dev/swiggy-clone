@@ -5,7 +5,7 @@ import { environment } from '../environments/environment';
 import useNetworkActivity from '../utils/useNetworkActivity';
 import UserContext from '../utils/UserContext';
 import { Flex } from './styles/Flex.styled';
-import { CartIcon, Logo, StyledHeader } from './styles/Header.styled';
+import { CartIcon, HeaderIcon, Logo, StyledHeader } from './styles/Header.styled';
 
 const HeaderComponent = () => {
 	let [isUserSignedIn, setIsUserSignedIn] = useState(false);
@@ -29,7 +29,10 @@ const HeaderComponent = () => {
 						<span>{onlineStatus ? '✅' : '🔴'}</span>
 					</span>
 					<Link to={'home'}>Home</Link>
-					<Link to={'about'}>About Us</Link>
+					<Link to={'search'}>
+						<HeaderIcon src={environment.imagesBasePath + 'search.svg'}></HeaderIcon>
+						Search
+					</Link>
 					<Link to={'contact'}>Contact Us</Link>
 					<Link
 						onClick={() => {

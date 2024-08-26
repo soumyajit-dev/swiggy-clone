@@ -10,7 +10,7 @@ export const StyledHeader = styled.div`
 	z-index: 100;
 	width: 100%;
 
-	> svg {
+	svg {
 		font-size: 14px;
 		fill: #282c3f;
 		stroke-width: 1px;
@@ -44,6 +44,11 @@ export const Logo = styled.img`
 	&:hover {
 		transform: scale(1.1);
 	}
+`;
+
+export const HeaderIcon = styled.img`
+	width: 1rem;
+	stroke: red;
 `;
 
 export const CartIcon = styled.span`

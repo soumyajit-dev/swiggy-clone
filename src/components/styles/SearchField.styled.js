@@ -4,7 +4,7 @@ import theme from '../../utils/theme';
 export const SearchField = styled.div`
 	margin-bottom: 10px;
 	height: 3rem;
-	width: 75%;
+	width: 100%;
 	background: ${theme.colors.white};
 	border: 1px solid ${theme.colors.borderColor};
 	border-radius: 10px;

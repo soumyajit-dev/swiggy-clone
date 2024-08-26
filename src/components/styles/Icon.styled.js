@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Icon = styled.img`
 	width: 1.4rem;
-	height: 1.4rem;
+	height: 2.8rem;
 	font-weight: 700;
 	font-size: 20px;
 	fill: #282c3f;
