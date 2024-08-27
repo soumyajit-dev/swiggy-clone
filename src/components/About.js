@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserComponent from './User';
+import { About } from './styles/About.styled';
 
 class AboutComponent extends Component {
 	render() {
@@ -14,14 +15,13 @@ class AboutComponent extends Component {
 		};
 
 		return (
-			<div className='about-us'>
+			<About>
 				{Array(7)
 					.fill(user)
 					.map((each, index) => {
 						return <UserComponent key={index} userDetails={each} />;
 					})}
-				{/* <UserClassComponent userDetails={user} /> */}
-			</div>
+			</About>
 		);
 	}
 }

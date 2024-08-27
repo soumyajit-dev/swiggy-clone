@@ -12,21 +12,19 @@ import UserContext from './utils/UserContext';
 const AppComponent = () => {
 	const [userInfo, setUserInfo] = useState();
 	return (
-		<React.StrictMode>
-			<ThemeProvider theme={theme}>
-				<GlobalStyle />
-				<Provider store={appStore}>
-					<UserContext.Provider value={{ context: userInfo, setContext: setUserInfo }}>
-						<div className='app'>
-							<HeaderComponent></HeaderComponent>
-							<Container>
-								<Outlet />
-							</Container>
-						</div>
-					</UserContext.Provider>
-				</Provider>
-			</ThemeProvider>
-		</React.StrictMode>
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Provider store={appStore}>
+				<UserContext.Provider value={{ context: userInfo, setContext: setUserInfo }}>
+					<div className='app'>
+						<HeaderComponent></HeaderComponent>
+						<Container>
+							<Outlet />
+						</Container>
+					</div>
+				</UserContext.Provider>
+			</Provider>
+		</ThemeProvider>
 	);
 };
 

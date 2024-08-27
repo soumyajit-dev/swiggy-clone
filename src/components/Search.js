@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useGetLandingCuisinesForSearchQuery, useLazyGetSearchedRestaurantsQuery } from '../redux/services/restaurantApi';
+import { useGetLandingCuisinesForSearchQuery, useGetSearchedRestaurantsQuery } from '../redux/services/restaurantApi';
 import CONSTANTS from '../utils/constant';
+import { useDebounce } from '../utils/CustomHooks';
 import { Flex } from './styles/Flex.styled';
 import { SearchField } from './styles/SearchField.styled';
 import { Search, SearchCuisines, SearchResult } from './styles/SearchPage.styled';
@@ -8,12 +9,10 @@ import { Search, SearchCuisines, SearchResult } from './styles/SearchPage.styled
 const SearchComponent = () => {
 	const { data: cuisinesInfo } = useGetLandingCuisinesForSearchQuery();
 	const [searchText, setSearchText] = useState('');
-	const [fetchSearchData, { data: searchResults, isLoading }] = useLazyGetSearchedRestaurantsQuery();
-
-	// const fetchSearchData = () => {
-	// 	const axiosData = await axios.get(CONSTANTS.SWIGGY_SEARCH_API + searchText);
-	// 	setSearchResult(axiosData?.data?.data?.suggestions);
-	// };
+	const debouncedSearchText = useDebounce(searchText);
+	const { data: searchResults, isLoading } = useGetSearchedRestaurantsQuery(debouncedSearchText, {
+		skip: !debouncedSearchText || debouncedSearchText === '',
+	});
 
 	return (
 		<Search>
@@ -29,7 +28,7 @@ const SearchComponent = () => {
 							setSearchText(e.target.value);
 						}}
 					/>
-					<button className='search-button' type='submit' title='search-button' onClick={() => fetchSearchData(searchText)}>
+					<button className='search-button' type='submit' title='search-button'>
 						Search
 					</button>
 				</Flex>
@@ -55,11 +54,11 @@ const SearchComponent = () => {
 				: !isLoading &&
 				  searchResults.map((eachResult) => {
 						return (
-							<SearchResult key={eachResult.id}>
+							<SearchResult key={eachResult.cloudinaryId}>
 								<Flex $justify='flex-start' $gap='15px'>
 									<img src={CONSTANTS.CLOUDANARY_LOCATION + eachResult.cloudinaryId} />
 									<div>
-										<h2>{eachResult.highlightedText}</h2>
+										<h2>{eachResult.text}</h2>
 										<h4>{eachResult.subCategory}</h4>
 									</div>
 								</Flex>

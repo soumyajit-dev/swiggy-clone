@@ -5,6 +5,7 @@ import CONSTANTS from '../utils/constant';
 import { AddedMenuButton } from './styles/AddedMenuButton';
 import { Button } from './styles/Button.styled';
 import { Flex } from './styles/Flex.styled';
+import { MenuInfo, MenuItem } from './styles/RestaurantMenu.styled';
 
 const MenuCardsComponent = ({ category }) => {
 	const dispatch = useDispatch();
@@ -22,26 +23,26 @@ const MenuCardsComponent = ({ category }) => {
 	};
 
 	return (
-		<div className='menu-items'>
+		<>
 			{category?.itemCards?.map((eachCard) => {
 				const item = eachCard?.card?.info;
 
 				return (
-					<div className='menu-item' key={item?.id}>
-						<div className='menu-info'>
-							<h3 className='menu-name font-bold text-xl'>{item?.name}</h3>
-							<h4 className='menu-price font-bold text-base'>
+					<MenuItem key={item?.id}>
+						<MenuInfo>
+							<h3 className='font-bold text-xl'>{item?.name}</h3>
+							<h4 className='font-bold text-base'>
 								{item?.finalPrice ? (
 									<React.Fragment>
-										<span className='strikethrough'>₹{item?.price / 100}</span>
+										<Strikethrough>₹{item?.price / 100}</Strikethrough>
 										<span>₹{item?.finalPrice / 100}</span>
 									</React.Fragment>
 								) : (
 									<span>₹{item?.price / 100 || item?.defaultPrice / 100}</span>
 								)}
 							</h4>
-							<div className='menu-desc'>{item?.description}</div>
-						</div>
+							<div>{item?.description}</div>
+						</MenuInfo>
 						<div className='relative'>
 							<div className={item?.imageId ? 'absolute z-10 -bottom-3 left-0 right-0 mx-auto w-32' : 'w-32'}>
 								{(() => {
@@ -73,10 +74,10 @@ const MenuCardsComponent = ({ category }) => {
 							</div>
 							{item?.imageId && <img src={CONSTANTS.CLOUDANARY_LOCATION + item?.imageId} className='border border-gray-200' />}
 						</div>
-					</div>
+					</MenuItem>
 				);
 			})}
-		</div>
+		</>
 	);
 };
 

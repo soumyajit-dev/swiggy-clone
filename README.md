@@ -61,7 +61,10 @@
 
 # Parcel
 
-- "start": "parcel index.html --open",
+- "copy-assets": "cp -r src/assets dist",
+- "init": "npm run copy-assets",
+- "start": "npm run init && parcel public/index.html --port 4200 --open",
+- "build": "npm run init && parcel build"
 
 # React Context API
 

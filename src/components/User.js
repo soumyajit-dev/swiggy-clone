@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { UserCard } from './styles/About.styled';
 
 const UserComponent = ({ userDetails }) => {
 	const [image] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL_JlCFnIGX5omgjEjgV9F3sBRq14eTERK9w&s');
@@ -25,7 +26,7 @@ const UserComponent = ({ userDetails }) => {
 	const { avatar_url, bio, name, email, number, location } = userInfo;
 
 	return (
-		<div className='user-card'>
+		<UserCard>
 			<img src={avatar_url ?? image} alt='Image' />
 			<div>
 				<h1>{name}</h1>
@@ -34,7 +35,7 @@ const UserComponent = ({ userDetails }) => {
 				<h4>{email}</h4>
 				<h4>{number}</h4>
 			</div>
-		</div>
+		</UserCard>
 	);
 };
 

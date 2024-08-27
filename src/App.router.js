@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AppComponent from './App';
-import ContactUsComponent from './components/ContactUs';
+import AboutComponent from './components/About';
 import HomeComponent from './components/Home';
 import RestaurantMenuComponent from './components/RestaurantMenu';
 
@@ -30,8 +30,8 @@ const AppRouter = createBrowserRouter([
 				),
 			},
 			{
-				path: 'contact',
-				element: <ContactUsComponent />,
+				path: 'about',
+				element: <AboutComponent />,
 			},
 			{
 				path: 'cart',

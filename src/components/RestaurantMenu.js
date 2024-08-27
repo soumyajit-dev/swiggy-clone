@@ -5,6 +5,7 @@ import CONSTANTS from '../utils/constant';
 import MenuCardsComponent from './MenuCards';
 import { restaurantMenuAccordian } from './RestaurantMenuAccordians';
 import Shimmer from './Shimmer';
+import { Cuisines } from './styles/RestaurantMenu.styled';
 
 const RestaurantMenuComponent = () => {
 	const { id } = useParams();
@@ -32,13 +33,13 @@ const RestaurantMenuComponent = () => {
 					<h3 className='font-bold text-xl'>
 						{avgRating} ({totalRatingsString}) - {costForTwoMessage}
 					</h3>
-					<h4 className='cuisine font-bold'>{cuisines.join(', ')}</h4>
+					<Cuisines>{cuisines.join(', ')}</Cuisines>
 					<h3 className='font-bold'>{sla?.slaString}</h3>
 				</div>
 				{expectationNotifiers?.map((each) => {
 					return (
-						<div className='flex expectation-notifier gap-3 px-8 py-4' key={each.enrichedText}>
-							<img src={CONSTANTS.CLOUDANARY_LOCATION + each?.icon.imageId} alt='Image' />
+						<div className='flex gap-3 px-8 py-4' key={each.enrichedText}>
+							<img className='w-7' src={CONSTANTS.CLOUDANARY_LOCATION + each?.icon.imageId} alt='Image' />
 							<div dangerouslySetInnerHTML={{ __html: each?.enrichedText }}></div>
 						</div>
 					);

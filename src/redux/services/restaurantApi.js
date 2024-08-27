@@ -27,4 +27,4 @@ export const restaurantApi = createApi({
 	}),
 });
 
-export const { useGetAllRestaurantsQuery, useGetAllMenuByRestaurantQuery, useLazyGetSearchedRestaurantsQuery, useGetLandingCuisinesForSearchQuery } = restaurantApi;
+export const { useGetAllRestaurantsQuery, useGetAllMenuByRestaurantQuery, useGetSearchedRestaurantsQuery, useGetLandingCuisinesForSearchQuery } = restaurantApi;
