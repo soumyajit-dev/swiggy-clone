@@ -11,6 +11,7 @@ import UserContext from './utils/UserContext';
 
 const AppComponent = () => {
 	const [userInfo, setUserInfo] = useState();
+
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />

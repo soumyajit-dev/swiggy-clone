@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { environment } from '../environments/environment';
 import useNetworkActivity from '../utils/useNetworkActivity';
 import UserContext from '../utils/UserContext';
 import { Flex } from './styles/Flex.styled';
@@ -21,7 +20,7 @@ const HeaderComponent = () => {
 		<StyledHeader>
 			<Flex $justify='space-around'>
 				<Link to={'home'}>
-					<Logo src={environment.imagesBasePath + 'swiggy-logo.svg'} />
+					<Logo src={process.env.imagesBasePath + 'swiggy-logo.svg'} />
 				</Link>
 				<Flex $justify='space-evenly' className='links'>
 					<span className='cursor-pointer flex gap-2'>
@@ -30,7 +29,7 @@ const HeaderComponent = () => {
 					</span>
 					<Link to={'home'}>Home</Link>
 					<Link to={'search'}>
-						<HeaderIcon src={environment.imagesBasePath + 'search.svg'}></HeaderIcon>
+						<HeaderIcon src={process.env.imagesBasePath + 'search.svg'}></HeaderIcon>
 						Search
 					</Link>
 					<Link to={'contact'}>Contact Us</Link>

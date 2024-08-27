@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { environment } from '../environments/environment';
 import { addItemToCart, clearSpecificCartItem, removeItemFromCart } from '../redux/store/cartSlice';
 import CONSTANTS from '../utils/constant';
 import { Button } from './styles/Button.styled';
@@ -53,7 +52,7 @@ const CartComponent = () => {
 									</div>
 									<h3>₹{eachItem?.item?.price / 100 || eachItem?.item?.defaultPrice / 100}</h3>
 									<Icon
-										src={environment.imagesBasePath + 'cross-icon.svg'}
+										src={process.env.imagesBasePath + 'cross-icon.svg'}
 										onClick={() => {
 											dispatch(clearSpecificCartItem(eachItem.item));
 										}}
@@ -66,7 +65,7 @@ const CartComponent = () => {
 						<Flex $justify='space-between'>
 							<Link to={'/home'}>
 								<Flex $justify='space-between'>
-									<Icon src={environment.imagesBasePath + 'arrow-left.svg'} />
+									<Icon src={process.env.imagesBasePath + 'arrow-left.svg'} />
 									<span>Back to Dashboard</span>
 								</Flex>
 							</Link>
