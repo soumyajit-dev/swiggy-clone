@@ -1,60 +1,96 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useGetLandingCuisinesForSearchQuery, useGetSearchedRestaurantsQuery } from '../redux/services/restaurantApi';
 import CONSTANTS from '../utils/constant';
 import { useDebounce } from '../utils/CustomHooks';
+import SearchedRestaurantInfo from './SearchedRestaurantInfo';
 import { Flex } from './styles/Flex.styled';
+import { Icon } from './styles/Icon.styled';
 import { SearchField } from './styles/SearchField.styled';
 import { Search, SearchCuisines, SearchResult } from './styles/SearchPage.styled';
 
 const SearchComponent = () => {
-	const { data: cuisinesInfo } = useGetLandingCuisinesForSearchQuery();
-	const [searchText, setSearchText] = useState('');
+	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchText, setSearchText] = useState(searchParams.get('query') || '');
+	let resultSelected = searchParams.get('query');
+	const { data: cuisinesInfo } = useGetLandingCuisinesForSearchQuery(null, {
+		skip: resultSelected,
+	});
 	const debouncedSearchText = useDebounce(searchText);
 	const { data: searchResults, isLoading } = useGetSearchedRestaurantsQuery(debouncedSearchText, {
-		skip: !debouncedSearchText || debouncedSearchText === '',
+		skip: resultSelected || !debouncedSearchText || debouncedSearchText === '',
 	});
+
+	const routeToRestaurant = (data) => {
+		if (window.history.pushState) {
+			const updatedSearchParams = new URLSearchParams();
+			if (data) updatedSearchParams.set('query', data);
+			resultSelected = data;
+			setSearchParams(updatedSearchParams.toString());
+		}
+	};
 
 	return (
 		<Search>
 			<SearchField>
 				<Flex>
-					<input
-						className='search-input'
-						title='search-input'
-						type='test'
-						value={searchText}
-						placeholder='Search...'
-						onInput={(e) => {
-							setSearchText(e.target.value);
-						}}
-					/>
-					<button className='search-button' type='submit' title='search-button'>
-						Search
-					</button>
+					{resultSelected && (
+						<Icon
+							src={process.env.imagesBasePath + 'arrow-left.svg'}
+							alt=''
+							onClick={() => {
+								routeToRestaurant();
+							}}
+						/>
+					)}
+					{resultSelected ? (
+						<div className='w-full ml-2'>{resultSelected}</div>
+					) : (
+						<input
+							className='search-input'
+							title='search-input'
+							type='text'
+							value={searchText}
+							placeholder='Search...'
+							onInput={(e) => {
+								setSearchText(e.target.value);
+							}}
+						/>
+					)}
+					{searchText ? (
+						<Icon className='mr-3' src={process.env.imagesBasePath + 'cross-icon.svg'} alt='' onClick={() => setSearchText('')} />
+					) : (
+						<button className='search-button' type='submit' title='search-button'>
+							Search
+						</button>
+					)}
 				</Flex>
 			</SearchField>
 
-			{!searchResults?.length
-				? cuisinesInfo &&
-				  cuisinesInfo?.map((eachCuisine) => {
+			{!resultSelected ? (
+				!searchText || searchText === '' ? (
+					cuisinesInfo &&
+					cuisinesInfo?.map((eachCuisine) => {
 						const card = eachCuisine?.card?.card;
 						return (
 							card?.gridElements && (
 								<SearchCuisines key={card.id}>
 									<h1>{card?.title || 'Popular Cuisines'}</h1>
-									<Flex>
+									<Flex $gap='0'>
 										{card?.gridElements?.infoWithStyle?.info?.map((eachInfo) => {
-											return <img key={eachInfo.id} src={CONSTANTS.CLOUDANARY_LOCATION + eachInfo?.imageId} />;
+											return <img key={eachInfo.id} src={CONSTANTS.CLOUDANARY_LOCATION + eachInfo?.imageId} onClick={() => setSearchText(eachInfo.action.link.split('=')[1])} />;
 										})}
 									</Flex>
 								</SearchCuisines>
 							)
 						);
-				  })
-				: !isLoading &&
-				  searchResults.map((eachResult) => {
+					})
+				) : (
+					!isLoading &&
+					searchResults?.length > 0 &&
+					searchResults.map((eachResult) => {
 						return (
-							<SearchResult key={eachResult.cloudinaryId}>
+							<SearchResult key={eachResult.cloudinaryId} onClick={() => routeToRestaurant(eachResult.text)}>
 								<Flex $justify='flex-start' $gap='15px'>
 									<img src={CONSTANTS.CLOUDANARY_LOCATION + eachResult.cloudinaryId} />
 									<div>
@@ -64,7 +100,11 @@ const SearchComponent = () => {
 								</Flex>
 							</SearchResult>
 						);
-				  })}
+					})
+				)
+			) : (
+				<SearchedRestaurantInfo queriedStr={resultSelected} />
+			)}
 		</Search>
 	);
 };

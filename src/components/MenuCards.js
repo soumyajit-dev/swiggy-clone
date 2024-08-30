@@ -5,7 +5,7 @@ import CONSTANTS from '../utils/constant';
 import { AddedMenuButton } from './styles/AddedMenuButton';
 import { Button } from './styles/Button.styled';
 import { Flex } from './styles/Flex.styled';
-import { MenuInfo, MenuItem } from './styles/RestaurantMenu.styled';
+import { MenuInfo, MenuItem, Strikethrough } from './styles/RestaurantMenu.styled';
 
 const MenuCardsComponent = ({ category }) => {
 	const dispatch = useDispatch();

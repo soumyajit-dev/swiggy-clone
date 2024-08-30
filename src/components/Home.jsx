@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useGetAllRestaurantsQuery } from '../redux/services/restaurantApi';
-import useNetworkActivity from '../utils/useNetworkActivity';
+import { useEffectAfterMount, useNetworkActivity } from '../utils/CustomHooks';
 import { enhancedRestaurantCard } from './EnhancedRestaurantCard';
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
@@ -8,8 +8,6 @@ import { LinkButton } from './styles/LinkButton.styled';
 
 const HomeComponent = () => {
 	const { data: restaurants, isLoading } = useGetAllRestaurantsQuery();
-	// const restaurants = useRestaurantsInfo();
-	// const isLoading = true;
 	const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
 	const networkStatus = useNetworkActivity();
@@ -17,7 +15,13 @@ const HomeComponent = () => {
 	const RestaurantCardPromoted = enhancedRestaurantCard(RestaurantCard);
 
 	useEffect(() => {
+		console.log('Normal Use Effect');
+
 		setFilteredRestaurants(restaurants);
+	}, [restaurants]);
+
+	useEffectAfterMount(() => {
+		console.log('Called');
 	}, [restaurants]);
 
 	if (!networkStatus) {

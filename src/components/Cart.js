@@ -64,7 +64,7 @@ const CartComponent = () => {
 					<CartFooter>
 						<Flex $justify='space-between'>
 							<Link to={'/home'}>
-								<Flex $justify='space-between'>
+								<Flex $justify='space-between' $gap='10px'>
 									<Icon src={process.env.imagesBasePath + 'arrow-left.svg'} />
 									<span>Back to Dashboard</span>
 								</Flex>
@@ -77,7 +77,7 @@ const CartComponent = () => {
 				</React.Fragment>
 			) : (
 				<EmptyCart>
-					<Grid>
+					<Grid className='m-auto'>
 						<img src='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0' />
 						<div>
 							<h2>Your cart is empty</h2>

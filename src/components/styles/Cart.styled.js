@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import theme from '../../utils/theme';
 
 export const Cart = styled.div`
+	height: 78vh;
 	margin-bottom: 5rem;
 
 	.img {
@@ -96,6 +97,7 @@ export const CartFooter = styled.div`
 `;
 
 export const EmptyCart = styled.div`
+	display: flex;
 	text-align: center;
 	height: 100%;
 

@@ -13,7 +13,6 @@ module.exports = {
 	},
 	plugins: [new MiniCssExtractPlugin()],
 	optimization: {
-		chunkIds: 'named',
 		usedExports: true,
 		minimize: true,
 		minimizer: [
@@ -35,20 +34,20 @@ module.exports = {
 			maxAsyncRequests: 30,
 			maxInitialRequests: 30,
 			enforceSizeThreshold: 50000,
-			// cacheGroups: {
-			// 	defaultVendors: {
-			// 		test: /[\\/]node_modules[\\/]/,
-			// 		priority: -10,
-			// 		reuseExistingChunk: true,
-			// 		name: 'vender',
-			// 		chunks: 'all',
-			// 	},
-			// 	default: {
-			// 		minChunks: 2,
-			// 		priority: -20,
-			// 		reuseExistingChunk: true,
-			// 	},
-			// },
+			cacheGroups: {
+				defaultVendors: {
+					test: /[\\/]node_modules[\\/]/,
+					priority: -10,
+					reuseExistingChunk: true,
+					name: 'vender',
+					chunks: 'all',
+				},
+				default: {
+					minChunks: 2,
+					priority: -20,
+					reuseExistingChunk: true,
+				},
+			},
 		},
 	},
 	performance: {

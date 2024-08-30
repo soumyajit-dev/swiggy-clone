@@ -3,7 +3,17 @@ import CONSTANTS from '../../utils/constant';
 
 export const restaurantApi = createApi({
 	reducerPath: 'restaurantApi',
-	baseQuery: fetchBaseQuery({ baseUrl: CONSTANTS.SWIGGY_BASE_URL }),
+
+	baseQuery: fetchBaseQuery({
+		baseUrl: CONSTANTS.SWIGGY_BASE_URL,
+		prepareHeaders: (headers, { getState }) => {
+			console.log(getState());
+		},
+		responseHandler: (res) => {
+			console.log(res);
+			return res.json();
+		},
+	}),
 	endpoints: (builder) => ({
 		getAllRestaurants: builder.query({
 			query: () => 'restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING',
@@ -24,7 +34,21 @@ export const restaurantApi = createApi({
 			query: () => 'landing/PRE_SEARCH?lat=12.96340&lng=77.58550',
 			transformResponse: (res) => res?.data?.cards,
 		}),
+		getSelectedRestaurantResult: builder.query({
+			query: ({ queriedStr, id }) =>
+				id
+					? `restaurants/search/v3?lat=12.96340&lng=77.58550&str=${queriedStr}&submitAction=ENTER&selectedPLTab=${id}`
+					: `restaurants/search/v3?lat=12.96340&lng=77.58550&str=${queriedStr}&submitAction=ENTER`,
+			transformResponse: (res) => res?.data?.cards,
+		}),
 	}),
 });
 
-export const { useGetAllRestaurantsQuery, useGetAllMenuByRestaurantQuery, useGetSearchedRestaurantsQuery, useGetLandingCuisinesForSearchQuery } = restaurantApi;
+export const {
+	useGetAllRestaurantsQuery,
+	useGetAllMenuByRestaurantQuery,
+	useGetSearchedRestaurantsQuery,
+	useGetLandingCuisinesForSearchQuery,
+	useGetSelectedRestaurantResultQuery,
+	useLazyGetSelectedRestaurantResultQuery,
+} = restaurantApi;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AxiosInstance from './AxiosConfig';
 import CONSTANTS from './constant';
 
@@ -19,7 +19,7 @@ export const useNetworkActivity = () => {
 	return onlineStatus;
 };
 
-export const useDebounce = (value, delay = 1000) => {
+export const useDebounce = (value, delay = 500) => {
 	const [debounceValue, setDebounceValue] = useState('');
 
 	useEffect(() => {
@@ -32,6 +32,19 @@ export const useDebounce = (value, delay = 1000) => {
 
 	return debounceValue;
 };
+
+export function useEffectAfterMount(fn, deps = []) {
+	const isMounted = useRef(false);
+
+	useEffect(() => {
+		if (!isMounted.current) {
+			isMounted.current = true;
+			return;
+		}
+
+		fn();
+	}, deps);
+}
 
 const useRestaurantMenu = (resId) => {
 	const [resInfo, setResInfo] = useState(null);

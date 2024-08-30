@@ -5,6 +5,6 @@ export const Grid = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: ${({ $align }) => $align || 'center'};
 	gap: 2rem;
 `;

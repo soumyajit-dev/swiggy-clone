@@ -13,12 +13,17 @@ export const SearchField = styled.div`
 		box-shadow: 0 0 3px 0 #1183d6;
 	}
 
+	img {
+		margin-left: 10px;
+		height: auto;
+	}
+
 	input {
 		width: 100%;
 		background: transparent;
 		border: none;
 		padding: 12px;
-		font-size: 16px;
+		font-size: 1rem;
 		color: inherit;
 
 		&::placeholder {

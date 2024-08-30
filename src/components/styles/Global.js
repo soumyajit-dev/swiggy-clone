@@ -23,6 +23,26 @@ const GlobalStyle = createGlobalStyle`
   input:focus {
     outline: none;
   }
+
+  h2 {
+    font-family: Gilroy_Bold;
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  h6 {
+    font-size: 0.7rem;
+    line-height: 1.3rem;
+    font-weight: 500;
+    letter-spacing: -.3px;
+  }
+
+  p {
+    font-size: 0.7rem;
+    line-height: 16px;
+  }
 `;
 
 export default GlobalStyle;
