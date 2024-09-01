@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import CONSTANTS from '../../utils/constant';
+import CONSTANTS from '../../Utils/constant';
 
 export const imageApi = createApi({
 	reducerPath: 'imageApi',

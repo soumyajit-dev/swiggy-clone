@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart, removeItemFromCart } from '../redux/store/cartSlice';
-import CONSTANTS from '../utils/constant';
+import { addItemToCart, removeItemFromCart } from '../Services/Store/cartSlice';
+import CONSTANTS from '../Utils/constant';
 import { AddedMenuButton } from './styles/AddedMenuButton';
 import { Button } from './styles/Button.styled';
 import { Flex } from './styles/Flex.styled';

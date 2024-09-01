@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const AxiosInstance = axios.create({
+const axiosInstance = axios.create({
 	timeout: 10000,
 });
 
-AxiosInstance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
 	(config) => {
 		console.log('Request Started');
 		return config;
@@ -14,9 +14,9 @@ AxiosInstance.interceptors.request.use(
 	}
 );
 
-AxiosInstance.interceptors.response.use((res) => {
+axiosInstance.interceptors.response.use((res) => {
 	console.log(res);
 	return res;
 });
 
-export default AxiosInstance;
+export default axiosInstance;

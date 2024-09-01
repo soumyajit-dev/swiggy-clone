@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useGetLandingCuisinesForSearchQuery, useGetSearchedRestaurantsQuery } from '../redux/services/restaurantApi';
-import CONSTANTS from '../utils/constant';
-import { useDebounce } from '../utils/CustomHooks';
-import SearchedRestaurantInfo from './SearchedRestaurantInfo';
-import { Flex } from './styles/Flex.styled';
-import { Icon } from './styles/Icon.styled';
-import { SearchField } from './styles/SearchField.styled';
-import { Search, SearchCuisines, SearchResult } from './styles/SearchPage.styled';
+import SearchedRestaurantInfo from '../Components/SearchedRestaurantInfo';
+import { Flex } from '../Components/styles/Flex.styled';
+import { Icon } from '../Components/styles/Icon.styled';
+import { SearchField } from '../Components/styles/SearchField.styled';
+import { Search, SearchCuisines, SearchResult } from '../Components/styles/SearchPage.styled';
+import { useGetLandingCuisinesForSearchQuery, useGetSearchedRestaurantsQuery } from '../Services/API/restaurantApi';
+import CONSTANTS from '../Utils/constant';
+import { useDebounce } from '../Utils/CustomHooks';
 
 const SearchComponent = () => {
 	const [searchParams, setSearchParams] = useSearchParams();

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addItemToCart, clearSpecificCartItem, removeItemFromCart } from '../redux/store/cartSlice';
-import CONSTANTS from '../utils/constant';
-import { Button } from './styles/Button.styled';
-import { Cart, CartFooter, CartItem, EmptyCart } from './styles/Cart.styled';
-import { Flex } from './styles/Flex.styled';
-import { Grid } from './styles/Grid.styled';
-import { Heading } from './styles/Heading.styled';
-import { Icon } from './styles/Icon.styled';
+import { Button } from '../Components/styles/Button.styled';
+import { Cart, CartFooter, CartItem, EmptyCart } from '../Components/styles/Cart.styled';
+import { Flex } from '../Components/styles/Flex.styled';
+import { Grid } from '../Components/styles/Grid.styled';
+import { Heading } from '../Components/styles/Heading.styled';
+import { Icon } from '../Components/styles/Icon.styled';
+import { addItemToCart, clearSpecificCartItem, removeItemFromCart } from '../Services/Store/cartSlice';
+import CONSTANTS from '../Utils/constant';
 
 const CartComponent = () => {
 	const cartItems = useSelector((store) => store.cart.items);

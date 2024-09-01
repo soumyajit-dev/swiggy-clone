@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CONSTANTS from '../utils/constant';
+import CONSTANTS from '../Utils/constant';
 import { RestaurantCardStyled } from './styles/RastaurantCard.styled';
 
 const RestaurantCard = (props) => {

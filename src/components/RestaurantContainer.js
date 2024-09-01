@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CONSTANTS from '../utils/constant';
+import CONSTANTS from '../Utils/constant';
 import { Flex } from './styles/Flex.styled';
 import { RestaurantContainer } from './styles/RestaurantContainer.styled';
 import { DisplayContainer } from './styles/SearchResInfo.styled';

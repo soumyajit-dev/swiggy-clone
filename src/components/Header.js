@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useNetworkActivity } from '../utils/CustomHooks';
-import UserContext from '../utils/UserContext';
+import UserContext from '../Services/Contexts/UserContext';
+import { useNetworkActivity } from '../Utils/CustomHooks';
 import { Flex } from './styles/Flex.styled';
 import { CartIcon, HeaderIcon, Logo, StyledHeader } from './styles/Header.styled';
 

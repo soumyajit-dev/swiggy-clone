@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { imageApi } from '../services/imageApi';
-import { restaurantApi } from '../services/restaurantApi';
+import { imageApi } from '../API/imageApi';
+import { restaurantApi } from '../API/restaurantApi';
 import cartReducer from './cartSlice';
 
 const appStore = configureStore({

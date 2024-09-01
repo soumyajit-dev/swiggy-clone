@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetAllMenuByRestaurantQuery } from '../redux/services/restaurantApi';
-import CONSTANTS from '../utils/constant';
-import MenuCardsComponent from './MenuCards';
-import { restaurantMenuAccordian } from './RestaurantMenuAccordians';
-import Shimmer from './Shimmer';
-import { Cuisines } from './styles/RestaurantMenu.styled';
+import MenuCardsComponent from '../Components/MenuCards';
+import { restaurantMenuAccordian } from '../Components/RestaurantMenuAccordians';
+import Shimmer from '../Components/Shimmer';
+import { Cuisines } from '../Components/styles/RestaurantMenu.styled';
+import { useGetAllMenuByRestaurantQuery } from '../Services/API/restaurantApi';
+import CONSTANTS from '../Utils/constant';
 
 const RestaurantMenuComponent = () => {
 	const { id } = useParams();

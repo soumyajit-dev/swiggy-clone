@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useLazyGetSelectedRestaurantResultQuery } from '../redux/services/restaurantApi';
+import { useLazyGetSelectedRestaurantResultQuery } from '../Services/API/restaurantApi';
 import DishContainerComponent from './DishContainer';
 import RestaurantContainerComponent from './RestaurantContainer';
 import Shimmer from './Shimmer';

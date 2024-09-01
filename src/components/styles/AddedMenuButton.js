@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../../utils/theme';
+import theme from '../../Services/Providers/theme';
 
 export const AddedMenuButton = styled.div`
 	width: ${({ $width }) => $width || '100%'};

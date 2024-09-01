@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AppComponent from './App';
-import AboutComponent from './components/About';
-import HomeComponent from './components/Home';
-import RestaurantMenuComponent from './components/RestaurantMenu';
+import AboutComponent from './Pages/About';
+import HomeComponent from './Pages/Home';
+import RestaurantMenuComponent from './Pages/RestaurantMenu';
 
-const SearchComponent = lazy(() => import('./components/Search'));
-const CartComponent = lazy(() => import('./components/Cart'));
+const SearchComponent = lazy(() => import('./Pages/Search'));
+const CartComponent = lazy(() => import('./Pages/Cart'));
 
 const AppRouter = createBrowserRouter([
 	{

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import HeaderComponent from './components/Header';
-import { Container } from './components/styles/Container.styled';
-import GlobalStyle from './components/styles/Global';
-import appStore from './redux/store/appStore';
-import theme from './utils/theme';
-import UserContext from './utils/UserContext';
+import HeaderComponent from './Components/Header';
+import { Container } from './Components/styles/Container.styled';
+import GlobalStyle from './Components/styles/Global';
+import UserContext from './Services/Contexts/UserContext';
+import theme from './Services/Providers/theme';
+import appStore from './Services/Store/appStore';
 
 const AppComponent = () => {
 	const [userInfo, setUserInfo] = useState();

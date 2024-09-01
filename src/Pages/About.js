@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import UserComponent from './User';
-import { About } from './styles/About.styled';
+import UserComponent from '../Components/User';
+import { About } from '../Components/styles/About.styled';
 
 class AboutComponent extends Component {
 	render() {

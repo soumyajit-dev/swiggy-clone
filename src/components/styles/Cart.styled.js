@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../../utils/theme';
+import theme from '../../Services/Providers/theme';
 
 export const Cart = styled.div`
 	height: 78vh;

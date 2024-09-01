@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import AxiosInstance from './AxiosConfig';
+import axiosInstance from './axiosConfig';
 import CONSTANTS from './constant';
 
 export const useNetworkActivity = () => {
@@ -54,7 +54,7 @@ const useRestaurantMenu = (resId) => {
 	}, []);
 
 	const fetchData = async () => {
-		const axiosData = await AxiosInstance.get(CONSTANTS.SWIGGY_RES_API + resId);
+		const axiosData = await axiosInstance.get(CONSTANTS.SWIGGY_RES_API + resId);
 		console.log(axiosData);
 
 		setResInfo(axiosData.data?.data?.cards);
@@ -71,7 +71,7 @@ const useSearchCuisine = () => {
 	}, []);
 
 	const fetchData = async () => {
-		const axiosData = await AxiosInstance.get(CONSTANTS.SWIGGY_CUISINE_API);
+		const axiosData = await axiosInstance.get(CONSTANTS.SWIGGY_CUISINE_API);
 		setCuisionInfo(axiosData.data?.data?.cards);
 	};
 

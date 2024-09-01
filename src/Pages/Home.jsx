@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useGetAllRestaurantsQuery } from '../redux/services/restaurantApi';
-import { useEffectAfterMount, useNetworkActivity } from '../utils/CustomHooks';
-import { enhancedRestaurantCard } from './EnhancedRestaurantCard';
-import RestaurantCard from './RestaurantCard';
-import Shimmer from './Shimmer';
-import { LinkButton } from './styles/LinkButton.styled';
+import { enhancedRestaurantCard } from '../Components/EnhancedRestaurantCard';
+import RestaurantCard from '../Components/RestaurantCard';
+import Shimmer from '../Components/Shimmer';
+import { LinkButton } from '../Components/styles/LinkButton.styled';
+import { useGetAllRestaurantsQuery } from '../Services/API/restaurantApi';
+import { useEffectAfterMount, useNetworkActivity } from '../Utils/CustomHooks';
 
 const HomeComponent = () => {
 	const { data: restaurants, isLoading } = useGetAllRestaurantsQuery();
