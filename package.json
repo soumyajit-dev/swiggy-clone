@@ -7,7 +7,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node server/index.js",
 		"start:dev": "webpack-dev-server --env mode=development --open",
-		"build:prod": "webpack --env mode=production"
+		"build:prod": "npm install && webpack --env mode=production"
 	},
 	"author": "",
 	"license": "ISC",
