@@ -1,9 +1,10 @@
 const express = require('express');
 const axios = require('axios');
+const { default: CONSTANTS } = require('../../src/Utils/constant');
 
 const routers = express.Router();
 
-const SWIGGY_BASE_URL = 'https://www.swiggy.com/dapi';
+const SWIGGY_BASE_URL = CONSTANTS.SWIGGY_BASE_URL;
 
 routers.get('/api/restaurants', async (req, res) => {
 	try {
