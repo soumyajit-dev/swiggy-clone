@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${theme.colors.body};
-    font-family: 'ProximaNova', 'ProximaNovaExtraBold', arial, 'Helvetica Neue', sans-serif;
+    font-family: Gilroy, arial, Helvetica Neue, sans-serif;
     font-size: 1rem;
   }
 

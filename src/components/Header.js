@@ -18,7 +18,7 @@ const HeaderComponent = () => {
 
 	return (
 		<StyledHeader>
-			<Flex $justify='space-around'>
+			<Flex $justify='space-around' className='lg:justify-around md:justify-between'>
 				<Link to={'home'}>
 					<Logo src={process.env.imagesBasePath + 'swiggy-logo.svg'} />
 				</Link>

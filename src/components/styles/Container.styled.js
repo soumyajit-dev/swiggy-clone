@@ -7,6 +7,6 @@ export const Container = styled.div`
 	margin-top: 6rem;
 
 	@media (max-width: ${theme.view.tablet}) {
-		width: 100%;
+		width: 90%;
 	}
 `;

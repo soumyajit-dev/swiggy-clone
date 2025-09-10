@@ -5,7 +5,7 @@ export const restaurantApi = createApi({
 	reducerPath: 'restaurantApi',
 
 	baseQuery: fetchBaseQuery({
-		baseUrl: CONSTANTS.SWIGGY_BASE_URL,
+		baseUrl: CONSTANTS.DUMMY_SWIGGY_BASE_URL,
 		prepareHeaders: (headers, { getState }) => {
 			console.log(getState());
 		},
@@ -16,29 +16,26 @@ export const restaurantApi = createApi({
 	}),
 	endpoints: (builder) => ({
 		getAllRestaurants: builder.query({
-			query: () => 'restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING',
+			query: () => 'api/restaurants',
 			transformResponse: (res) => [
 				...res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
 				...res?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
 			],
 		}),
 		getAllMenuByRestaurant: builder.query({
-			query: (resId) => `menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.96340&lng=77.58550&restaurantId=${resId}`,
+			query: (resId) => `api/menu/${resId}`,
 			transformResponse: (res) => res?.data?.cards,
 		}),
 		getSearchedRestaurants: builder.query({
-			query: (searchText) => `restaurants/search/suggest?lat=12.96340&lng=77.58550&str=${searchText}`,
+			query: (searchText) => `api/restaurants/search/${searchText}`,
 			transformResponse: (res) => res?.data?.suggestions,
 		}),
 		getLandingCuisinesForSearch: builder.query({
-			query: () => 'landing/PRE_SEARCH?lat=12.96340&lng=77.58550',
+			query: () => 'api/landing',
 			transformResponse: (res) => res?.data?.cards,
 		}),
 		getSelectedRestaurantResult: builder.query({
-			query: ({ queriedStr, id }) =>
-				id
-					? `restaurants/search/v3?lat=12.96340&lng=77.58550&str=${queriedStr}&submitAction=ENTER&selectedPLTab=${id}`
-					: `restaurants/search/v3?lat=12.96340&lng=77.58550&str=${queriedStr}&submitAction=ENTER`,
+			query: ({ queriedStr, id }) => (id ? `api/restaurants/search/${id}?queriedStr=${queriedStr}` : `api/restaurants/search?queriedStr=${queriedStr}`),
 			transformResponse: (res) => res?.data?.cards,
 		}),
 	}),
