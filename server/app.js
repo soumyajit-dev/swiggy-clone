@@ -17,11 +17,11 @@ app.use(bodyParser.json());
 app.use(router);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/*path', (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
+// app.get('/*path', (req, res) => {
+// 	res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+// });
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
