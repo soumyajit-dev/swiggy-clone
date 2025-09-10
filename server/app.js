@@ -8,7 +8,7 @@ const path = require('path');
 const app = express();
 
 var corsOptions = {
-	origin: ['*'],
+	origin: ['http://localhost:4200', 'https://swiggy-clone-1998.netlify.app'],
 	optionsSuccessStatus: 200,
 };
 
